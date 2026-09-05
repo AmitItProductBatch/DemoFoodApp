@@ -15,8 +15,8 @@ RUN chmod +x ./mvnw && ./mvnw dependency:go-offline -B || true
 COPY src ./src
 RUN ./mvnw clean package -DskipTests -B
 
-# Stage 2: Runtime runner with JRE 17
-FROM eclipse-temurin:17-jre-alpine AS runner
+# Stage 2: Runtime runner with JDK 17 (includes jcmd, jstack, jmap)
+FROM eclipse-temurin:17-jdk-alpine AS runner
 
 WORKDIR /app
 
